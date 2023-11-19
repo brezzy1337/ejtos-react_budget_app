@@ -8,15 +8,31 @@ export const AppReducer = (state, action) => {
                 ...state,
                 // sets the company budget to the payload sent with the action
                 companyBudget: action.payload
-            };
+            }
+            
+            case 'DELETE_DEPARTMENT':
+                const updateDepartmentBudgets = state.departmentBudgets.filter(department => department.name !== action.payload.name);
+                return {
+                    ...state,
+                    departmentBudgets: updateDepartmentBudgets,
+                }
+
+            case 'CHG_CURRENCY':
+                action.type = "DONE";
+                state.Location = action.payload;
+                return {
+                    ...state
+                }
+                
             default:
                 return state;
         }
+
 }
 
 
-const intialState = {
-    companyBudget: 0,
+const initialState = {
+    CompanyBudget: 0,
     departmentBudgets: [
         { id: 1, name: 'Marketing', budget: 200 },
         { id: 2, name: 'Finance', budget: 100 },
@@ -24,7 +40,7 @@ const intialState = {
         { id: 3, name: 'Human Resources', budget: 50 },
         { id: 3, name: 'Sales', budget: 50 },
     ],
-    currency: '£'
+    Currency: '£'
 }
 
 export const AppContext = createContext();
@@ -43,15 +59,16 @@ export const AppProvider = (props) => {
     const totalBudgets = state.expenses.reduce((total, item) => {
         return (total = total + (item.unitprice*item.quantity));
     }, 0);
-state.CartValue = totalBudgets;
+        state.CartValue = totalBudgets;
+
     return (
         <AppContext.Provider
             value={{
-                CompanyBudget: state.companyBudget,
+                CompanyBudget: state.CompanyBudget,
                 setBudget,
-                DepartmentBudgets: state.departmentBudgets,
+                departmentBudgets: state.departmentBudgets,
                 dispatch,
-                Currency: state.currency
+                Currency: state.Currency
             }}
         >
             {props.children}

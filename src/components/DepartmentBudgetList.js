@@ -2,10 +2,9 @@ import React, { useContext } from 'react';
 import ExpenseItem from './ExpenseItem';
 import { AppContext } from '../context/AppContext';
 
-const departmentBudgetList = () => {
+const DepartmentBudgetList = () => {
     const { departmentBudgets } = useContext(AppContext);
     
-
     return (
         <table className='table'>
               <thead className="thead-light">
@@ -26,4 +25,4 @@ const departmentBudgetList = () => {
     );
 };
 
-export default departmentBudgetList;
+export default DepartmentBudgetList;
