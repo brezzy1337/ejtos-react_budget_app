@@ -1,13 +1,13 @@
 import React, { createContext, useReducer } from 'react';
 
 export const AppReducer = (state, action) => {
-    let new_departmentbudgets = [];
+    //let new_departmentbudgets = [];
     switch (action.type) {
         case 'SET_BUDGET':
             return {
                 ...state,
                 // sets the company budget to the payload sent with the action
-                companyBudget: action.payload
+                CompanyBudget: action.payload
             }
             
             case 'DELETE_DEPARTMENT':
@@ -18,27 +18,25 @@ export const AppReducer = (state, action) => {
                 }
 
             case 'CHG_CURRENCY':
-                action.type = "DONE";
-                state.Location = action.payload;
                 return {
-                    ...state
+                    ...state,
+                    Currency: action.payload
                 }
-                
+            
             default:
                 return state;
         }
-
 }
 
 
 const initialState = {
     CompanyBudget: 0,
     departmentBudgets: [
-        { id: 1, name: 'Marketing', budget: 200 },
-        { id: 2, name: 'Finance', budget: 100 },
-        { id: 3, name: 'Sales', budget: 50 },
-        { id: 3, name: 'Human Resources', budget: 50 },
-        { id: 3, name: 'Sales', budget: 50 },
+        { id: 1, name: 'Marketing', budget: 0 },
+        { id: 2, name: 'Finance', budget: 0 },
+        { id: 3, name: 'Sales', budget: 0 },
+        { id: 4, name: 'Human Resources', budget: 0 },
+        { id: 5, name: 'IT', budget: 0 },
     ],
     Currency: '£'
 }
@@ -56,10 +54,10 @@ export const AppProvider = (props) => {
         });
     }
 
-    const totalBudgets = state.expenses.reduce((total, item) => {
-        return (total = total + (item.unitprice*item.quantity));
-    }, 0);
-        state.CartValue = totalBudgets;
+    // const remainingBudgets = state.departmentBudgets.reduce((total, department) => {
+    //     return (total = total + (department.budget));
+    // }, 0);
+    //     state.CartValue = totalBudgets;
 
     return (
         <AppContext.Provider
