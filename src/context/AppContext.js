@@ -7,7 +7,7 @@ export const AppReducer = (state, action) => {
             return {
                 ...state,
                 // sets the company budget to the payload sent with the action
-                CompanyBudget: action.payload
+                CompanyBudget: action.payload,
             }
             
             case 'DELETE_DEPARTMENT':
