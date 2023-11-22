@@ -11,7 +11,6 @@ import Currency from './components/Currency';
 const App = () => {
     return (
         <AppProvider>
-            <div>Hello Word</div>
             <div className='container'>
                 <h1 className='mt-3'>Shopping App</h1>
                 <div className='row mt-3'> 

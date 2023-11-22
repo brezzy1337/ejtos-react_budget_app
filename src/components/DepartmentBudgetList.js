@@ -18,7 +18,12 @@ const DepartmentBudgetList = () => {
           </thead>
             <tbody>
             {departmentBudgets.map((departmentBudget) => (
-                <DepartmentBudgets id={departmentBudget.id} key={departmentBudget.id} name={departmentBudget.name} departmentBudget={departmentBudget.budget} />
+                <DepartmentBudgets
+                  id={departmentBudget.id}
+                  key={departmentBudget.id} 
+                  name={departmentBudget.name} 
+                  budget={departmentBudget.budget}
+                />
             ))}
             </tbody>
         </table>

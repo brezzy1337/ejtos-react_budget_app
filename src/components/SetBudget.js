@@ -13,7 +13,7 @@ const SetBudget = () => {
     }
 
     const remainingBudget = departmentBudgets.reduce((total, department) => {
-        return (total += (CompanyBudget - department.budget));
+        return (total = (CompanyBudget - department.budget));
     }, 0);
 
     const spentBudget = departmentBudgets.reduce((total, department) => {
