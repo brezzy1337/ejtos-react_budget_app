@@ -9,7 +9,6 @@ const SetBudget = () => {
             type:"SET_BUDGET",
             payload: val,
         }, console.log(CompanyBudget));    
-   
     }
 
 
@@ -23,13 +22,13 @@ const SetBudget = () => {
     return (
     <>
         <div className='alert alert-primary'>
+            Budget: {Currency}
             <input 
                 name="Budget"
                 id="Budget"
                 type="number" 
                 onChange={(e) => changeBudget(e.target.value)} 
             />
-            Budget: {Currency}{CompanyBudget}
         </div>
         <div className='alert alert-primary'>
             <span>Remaining: {Currency}{remainingBudget}</span>

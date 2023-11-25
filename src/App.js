@@ -12,7 +12,7 @@ const App = () => {
     return (
         <AppProvider>
             <div className='container'>
-                <h1 className='mt-3'>Shopping App</h1>
+                <h1 className='mt-3'>Company Budget Allocation</h1>
                 <div className='row mt-3'> 
                     <div className='col-sm'>
                         <SetBudget />
@@ -21,13 +21,13 @@ const App = () => {
                         <Currency/>
                     </div>
                 </div>
-                <h3 className='mt-3'>Shopping Cart</h3>
+                <h3 className='mt-3'>Allocation</h3>
                 <div className='row '>
                     <div className='col-sm'>
                         <DepartmentBudgetList/>
                     </div>
                 </div>
-                <h3 className='mt-3'>Add Items</h3>
+                <h3 className='mt-3'>Change Allocation</h3>
                 <div className='row mt-3'>
                     <div className='col-sm'>
                         <ItemSelected/>

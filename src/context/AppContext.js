@@ -9,10 +9,36 @@ export const AppReducer = (state, action) => {
                 // sets the company budget to the payload sent with the action
                 CompanyBudget: action.payload,
             }
+
+            case 'SET_DEPARTMENT_BUDGET':
+                const setDepartmentBudget = state.departmentBudgets.map(department => {
+
+                    const totalAllocatedBudget = state.departmentBudgets.reduce((total, department) => total + department.budget, 0);
+
+                    if (department.name === action.payload.name && totalAllocatedBudget + action.payload.budget <= state.CompanyBudget) {
+                        return {
+                            ...department,
+                            budget: department.budget + action.payload.budget,
+                        };
+                    } else if (department.name === action.payload.name && totalAllocatedBudget + action.payload.budget > state.CompanyBudget) {
+                        return {
+                            ...department,
+                            budget: department.budget,
+                        };
+                    }
+                    
+               console.log(totalAllocatedBudget + action.payload.budget);
+               return department;
+                }); 
+
+                return {
+                    ...state,
+                    departmentBudgets: setDepartmentBudget,
+                }
             
             case 'INCREASE_DEPARTMENT_BUDGET_10':
                 const increaseDepartmentBudgets = state.departmentBudgets.map(department => {
-                    if (department.name === action.payload.name && department.budget < state.CompanyBudget) {
+                    if (department.name === action.payload.name && department.budget <= state.CompanyBudget) {
                         return {
                             ...department,
                             budget: department.budget + 10,
